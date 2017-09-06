@@ -174,6 +174,41 @@ function sendGenericMessage(recipientId) {
       }
     }
   };
+  function sendGenericMessage(recipientId) {
+    var messageData = {
+      recipient: {
+        id: recipientId
+      },
+      message: {
+        attachment: {
+          type: "template",
+          payload: {
+            template_type: "generic",
+            elements: [{
+              title: "bandcamp",
+              subtitle: "Visit Me On Bandcamp",
+              item_url: "https://avanttemporal.bandcamp.com/",
+              image_url: "https://f4.bcbits.com/img/0004546983_100.png",
+              buttons: [{
+                type: "web_url",
+                url: "https://f4.bcbits.com/img/0004546983_100.png",
+                title: "Open Web URL"
+              }],
+            }, {
+              title: "touch",
+              subtitle: "Visit Me On Bandcamp",
+              item_url: "https://avanttemporal.bandcamp.com/",
+              image_url: "https://f4.bcbits.com/img/0004546983_100.png",
+              buttons: [{
+                type: "web_url",
+                url: "https://www.oculus.com/en-us/touch/",
+                title: "Open Web URL"
+              }]
+            }]
+          }
+        }
+      }
+    };
 
   callSendAPI(messageData);
 }

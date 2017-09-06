@@ -144,30 +144,22 @@ function sendGenericMessage(recipientId) {
           elements: [{
             title: "rift",
             subtitle: "Next-generation virtual reality",
-            item_url: "https://www.oculus.com/en-us/rift/",
+            item_url: "https://www.avanttemporal.bandcamp.com/",
             image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
             buttons: [{
               type: "web_url",
-              url: "https://www.oculus.com/en-us/rift/",
+              url: "https://www.avanttemporal.bandcamp.com/",
               title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for first bubble",
             }],
           }, {
             title: "touch",
             subtitle: "Your Hands, Now in VR",
-            item_url: "https://www.oculus.com/en-us/touch/",
+            item_url: "https://www.avanttemporal.bandcamp.com/",
             image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
             buttons: [{
               type: "web_url",
-              url: "https://www.oculus.com/en-us/touch/",
+              url: "https://www.avanttemporal.bandcamp.com/",
               title: "Open Web URL"
-            }, {
-              type: "postback",
-              title: "Call Postback",
-              payload: "Payload for second bubble",
             }]
           }]
         }

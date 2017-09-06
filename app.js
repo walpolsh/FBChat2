@@ -140,26 +140,26 @@ function sendGenericMessage(recipientId) {
       attachment: {
         type: "template",
         payload: {
-          template_type: "generic",
+          template_type: "music",
           elements: [{
             title: "rift",
-            subtitle: "Next-generation virtual reality",
-            item_url: "https://www.avanttemporal.bandcamp.com/",
+            subtitle: "Come check out my Bandcamp Page",
+            item_url: "https://avanttemporal.bandcamp.com/",
             image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
             buttons: [{
               type: "web_url",
-              url: "https://www.avanttemporal.bandcamp.com/",
-              title: "Open Web URL"
+              url: "https://avanttemporal.bandcamp.com/",
+              title: "Open Web Bandcamp"
             }],
           }, {
             title: "touch",
-            subtitle: "Your Hands, Now in VR",
-            item_url: "https://www.avanttemporal.bandcamp.com/",
+            subtitle: "Bandcamp",
+            item_url: "https://avanttemporal.bandcamp.com/",
             image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
             buttons: [{
               type: "web_url",
-              url: "https://www.avanttemporal.bandcamp.com/",
-              title: "Open Web URL"
+              url: "https://avanttemporal.bandcamp.com/",
+              title: "Open Web Bandcamp"
             }]
           }]
         }

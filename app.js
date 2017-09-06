@@ -200,9 +200,9 @@ function sendGenericMessage(recipientId) {
               }],
             }, {
               title: "touch",
-              subtitle: "Visit Me On Bandcamp",
-              item_url: "https://avanttemporal.bandcamp.com/",
-              image_url: "https://f4.bcbits.com/img/0004546983_100.png",
+              subtitle: "Your Hands, Now in VR",
+              item_url: "https://www.oculus.com/en-us/touch/",
+              image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
               buttons: [{
                 type: "web_url",
                 url: "https://www.oculus.com/en-us/touch/",

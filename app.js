@@ -185,14 +185,18 @@ function sendGenericMessage(recipientId) {
           payload: {
             template_type: "generic",
             elements: [{
-              title: "bandcamp",
-              subtitle: "Visit Me On Bandcamp",
-              item_url: "https://avanttemporal.bandcamp.com/",
-              image_url: "https://f4.bcbits.com/img/0004546983_100.png",
+              title: "rift",
+              subtitle: "Next-generation virtual reality",
+              item_url: "https://www.oculus.com/en-us/rift/",
+              image_url: "http://messengerdemo.parseapp.com/img/rift.png",
               buttons: [{
                 type: "web_url",
-                url: "https://f4.bcbits.com/img/0004546983_100.png",
+                url: "https://www.oculus.com/en-us/rift/",
                 title: "Open Web URL"
+              }, {
+                type: "postback",
+                title: "Call Postback",
+                payload: "Payload for first bubble",
               }],
             }, {
               title: "touch",
@@ -203,6 +207,10 @@ function sendGenericMessage(recipientId) {
                 type: "web_url",
                 url: "https://www.oculus.com/en-us/touch/",
                 title: "Open Web URL"
+              }, {
+                type: "postback",
+                title: "Call Postback",
+                payload: "Payload for second bubble",
               }]
             }]
           }

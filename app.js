@@ -151,16 +151,6 @@ function sendGenericMessage(recipientId) {
               url: "https://avanttemporal.bandcamp.com/",
               title: "Open Web Bandcamp"
             }],
-          }, {
-            title: "touch",
-            subtitle: "Bandcamp",
-            item_url: "https://avanttemporal.bandcamp.com/",
-            image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
-            buttons: [{
-              type: "web_url",
-              url: "https://avanttemporal.bandcamp.com/",
-              title: "Open Web Bandcamp"
-            }]
           }]
         }
       }

@@ -140,7 +140,7 @@ function sendGenericMessage(recipientId) {
       attachment: {
         type: "template",
         payload: {
-          template_type: "music",
+          template_type: "generic",
           elements: [{
             title: "rift",
             subtitle: "Come check out my Bandcamp Page",

@@ -87,6 +87,9 @@ function receivedMessage(event) {
       case 'button':
         sendButtonMessage(senderID);
         break;
+      case 'receipt':
+        sendReceiptMessage(senderID);
+        break;
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -154,7 +157,8 @@ function sendReceiptMessage(recipientId, messageText) {
         ]
       }
     }
-  }
+  };
+  callSendAPI(messageData);
 }
 
 function sendGenericMessage(recipientId, messageText) {

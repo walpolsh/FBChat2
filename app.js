@@ -57,7 +57,7 @@ app.post('/webhook', function (req, res) {
 });
 
 function receivedMessage(event) {
-  // Putting a stub for now, we'll expand it in the following steps
+  // Putting a stub for nosw, we'll expand it in the following steps
   console.log("Message data: ", event.message);
 }
 
@@ -131,6 +131,30 @@ function callSendAPI(messageData) {
     }
   });
 }
+
+function sendButtonMessage(recipientId){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "button",
+          text: "What would you like to do next?",
+          buttons: [{
+            type: "web_url",
+            url: "https://avanttemporal.bandcamp.com/",
+            title: "Open Web Bandcamp"
+          }],
+        }
+      }
+    }
+  }
+  callSendAPI(messageData);
+}
+
 function sendGenericMessage(recipientId) {
   var messageData = {
     recipient: {

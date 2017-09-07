@@ -84,7 +84,9 @@ function receivedMessage(event) {
       case 'generic':
         sendGenericMessage(senderID);
         break;
-
+      case 'button':
+        sendButtonMessage(senderID);
+        break;
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -94,7 +96,31 @@ function receivedMessage(event) {
 }
 
 function sendGenericMessage(recipientId, messageText) {
-  // To be expanded in later sections
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
+          template_type: "generic",
+          elements: [{
+            title: "rift",
+            subtitle: "Come check out my Bandcamp Page",
+            item_url: "https://avanttemporal.bandcamp.com/",
+            image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
+            buttons: [{
+              type: "web_url",
+              url: "https://avanttemporal.bandcamp.com/",
+              title: "Open Web Bandcamp"
+            }],
+          }]
+        }
+      }
+    }
+  };
+  callSendAPI(messageData);
 }
 
 function sendTextMessage(recipientId, messageText) {
@@ -152,34 +178,6 @@ function sendButtonMessage(recipientId){
       }
     }
   }
-  callSendAPI(messageData);
-}
-
-function sendGenericMessage(recipientId) {
-  var messageData = {
-    recipient: {
-      id: recipientId
-    },
-    message: {
-      attachment: {
-        type: "template",
-        payload: {
-          template_type: "generic",
-          elements: [{
-            title: "rift",
-            subtitle: "Come check out my Bandcamp Page",
-            item_url: "https://avanttemporal.bandcamp.com/",
-            image_url: "https://media.giphy.com/media/ZqlvCTNHpqrio/giphy.gif",
-            buttons: [{
-              type: "web_url",
-              url: "https://avanttemporal.bandcamp.com/",
-              title: "Open Web Bandcamp"
-            }],
-          }]
-        }
-      }
-    }
-  };
   callSendAPI(messageData);
 }
 

@@ -76,7 +76,6 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  var generic = ['ordinary', 'normal', 'regular'];
 
   if (messageText) {
 

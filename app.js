@@ -61,6 +61,7 @@ function receivedMessage(event) {
   console.log("Message data: ", event.message);
 }
 
+
 function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
@@ -81,10 +82,10 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
-      case 'open_graph':
+      case messageText.contains('open_graph'):
         sendOpenGraphMessage(senderID);
         break;
-      case 'generic':
+      case messageText.contains('generic'):
         sendGenericMessage(senderID);
         break;
       case 'button':
@@ -99,81 +100,6 @@ function receivedMessage(event) {
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");
   }
-}
-
-function addPersistentMenu(){
-  request({
-    url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
-    qs: { access_token: PAGE_ACCESS_TOKEN },
-    method: 'POST',
-    json:{
-  "get_started":{
-        "payload":"GET_STARTED_PAYLOAD",
-      }
-    }
-  }, function(error, response, body) {
-    console.log(response)
-    if (error) {
-        console.log('Error sending messages: ', error)
-    } else if (response.body.error) {
-        console.log('Error: ', response.body.error)
-    }
-  })
-request({
-  url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
-  qs: { access_token: PAGE_ACCESS_TOKEN },
-  method: 'POST',
-  json:{
-"persistent_menu":[
-  {
-    "locale":"default",
-    "composer_input_disabled":true,
-    "call_to_actions":[
-      {
-        "title":"My Account",
-        "type":"nested",
-        "call_to_actions":[
-          {
-            "title":"Pay Bill",
-            "type":"postback",
-            "payload":"PAYBILL_PAYLOAD"
-          },
-          {
-            "title":"History",
-            "type":"postback",
-            "payload":"HISTORY_PAYLOAD"
-          },
-          {
-            "title":"Contact Info",
-            "type":"postback",
-            "payload":"CONTACT_INFO_PAYLOAD"
-          }
-        ]
-      },
-      {
-        "type":"web_url",
-        "title":"Latest News",
-        "url":"http://foxnews.com",
-        "webview_height_ratio":"full"
-      }
-    ]
-  },
-  {
-    "locale":"zh_CN",
-    "composer_input_disabled":false
-  }
-  ]
-  }
-
-}, function(error, response, body) {
-  console.log(response)
-  if (error) {
-      console.log('Error sending messages: ', error)
-  } else if (response.body.error) {
-      console.log('Error: ', response.body.error)
-  }
-})
-
 }
 
 function sendOpenGraphMessage(recipientId, messageText) {

@@ -86,7 +86,7 @@ function receivedMessage(event) {
       case "open_graph":
         sendOpenGraphMessage(senderID);
         break;
-      case generic:
+      case generic.test(messageText):
         sendGenericMessage(senderID);
         break;
       case "button":

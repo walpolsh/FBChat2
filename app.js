@@ -85,7 +85,7 @@ function receivedMessage(event) {
       case (messageText.match(/open_graph/) || {}).input:
         sendOpenGraphMessage(senderID);
         break;
-      case (messageText.match(/generic/, /ordinary/) || {}).input:
+      case (messageText.match(/generic/ | /ordinary/) || {}).input:
         sendGenericMessage(senderID);
         break;
       case (messageText.match(/button/) || {}).input:

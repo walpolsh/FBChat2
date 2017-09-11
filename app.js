@@ -76,26 +76,27 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    switch (messageText) {
-      case /'open_graph'/:
-        sendOpenGraphMessage(senderID);
-        break;
-      case /'generic'/:
-        sendGenericMessage(senderID);
-        break;
-      case /'button'/:
-        sendButtonMessage(senderID);
-        break;
-      case /'receipt'/:
-        sendReceiptMessage(senderID);
-        break;
-      default:
-        sendTextMessage(senderID, messageText);
+    function test(messageText) {
+      switch (true) {
+        case /open_graph/.test(messageText):
+          sendOpenGraphMessage(senderID);
+          break;
+        case /generic/.test(messageText):
+          sendGenericMessage(senderID);
+          break;
+        case /button/.test(messageText):
+          sendButtonMessage(senderID);
+          break;
+        case /receipt/.test(messageText):
+          sendReceiptMessage(senderID);
+          break;
+        default:
+          sendTextMessage(senderID, messageText);
+      }
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");

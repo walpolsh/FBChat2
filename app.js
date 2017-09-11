@@ -76,21 +76,23 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
+  var generic = new RegExp('generic', 'gi');
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
-      case /open_graph/.test(messageText):
+      case "open_graph":
         sendOpenGraphMessage(senderID);
         break;
-      case /generic/.test(messageText):
+      case generic:
         sendGenericMessage(senderID);
         break;
-      case /button/.test(messageText):
+      case "button":
         sendButtonMessage(senderID);
         break;
-      case /receipt/.test(messageText):
+      case 'receipt':
         sendReceiptMessage(senderID);
         break;
       default:

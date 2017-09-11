@@ -81,21 +81,16 @@ function receivedMessage(event) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    switch (messageText) {
-      case 'open_graph':
-        sendOpenGraphMessage(senderID);
-        break;
-      case 'generic':
-        sendGenericMessage(senderID);
-        break;
-      case 'button':
-        sendButtonMessage(senderID);
-        break;
-      case 'receipt':
-        sendReceiptMessage(senderID);
-        break;
-      default:
-        sendTextMessage(senderID, messageText);
+    if (messageText.indexOf('open_graph')) {
+      return sendOpenGraphMessage(senderID);
+    } else if (messageText.indexOf('generic')) {
+      return sendGenericMessage(senderID);
+    } else if (messageText.indexOf('button')) {
+      sendButtonMessage(senderID);
+    } else if (messageText.indexOf('receipt')) {
+      return sendReceiptMessage(senderID);
+    } else {
+      return sendTextMessage(senderID, messageText);
     }
   } else if (messageAttachments) {
     sendTextMessage(senderID, "Message with attachment received");

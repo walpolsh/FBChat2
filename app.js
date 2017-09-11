@@ -76,8 +76,7 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  var generic = /generic/ig;
-  var matchGeneric = generic.exec(messageText);
+
   if (messageText) {
 
     // If we receive a text message, check to see if it matches a keyword
@@ -86,7 +85,7 @@ function receivedMessage(event) {
       case "open_graph":
         sendOpenGraphMessage(senderID);
         break;
-      case matchGeneric:
+      case (messageText.match(/generic/) || {}).input:
         sendGenericMessage(senderID);
         break;
       case "button":

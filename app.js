@@ -81,11 +81,11 @@ function receivedMessage(event) {
 
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
-    switch (messageText) {
-      case messageText.contains('open_graph'):
+    switch (messageText.contains()) {
+      case 'open_graph':
         sendOpenGraphMessage(senderID);
         break;
-      case messageText.contains('generic'):
+      case 'generic':
         sendGenericMessage(senderID);
         break;
       case 'button':

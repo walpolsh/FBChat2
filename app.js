@@ -81,6 +81,9 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
+      case 'open_graph':
+        sendOpenGraphMessage(senderID);
+        break;
       case 'generic':
         sendGenericMessage(senderID);
         break;
@@ -99,20 +102,20 @@ function receivedMessage(event) {
 }
 
 
-function sendReceiptMessage(recipientId, messageText) {
+function sendOpenGraphMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
       id: recipientId,
     },
-    message:{
-      attachment:{
-        type:"template",
-        payload:{
+    message: {
+      attachment: {
+        type: "template",
+        payload: {
           template_type: "open_graph",
-          elements:[
+          elements: [
              {
-              url:"https://open.spotify.com/track/7GhIk7Il098yCjg4BQjzvb",
-              buttons:[
+              url: "https://open.spotify.com/track/7GhIk7Il098yCjg4BQjzvb",
+              buttons: [
                 {
                   type: "web_url",
                   url: "https://en.wikipedia.org/wiki/Rickrolling",

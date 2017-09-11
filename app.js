@@ -82,16 +82,16 @@ function receivedMessage(event) {
     // If we receive a text message, check to see if it matches a keyword
     // and send back the example. Otherwise, just echo the text we received.
     switch (messageText) {
-      case (messageText.match(/open_graph/gi) || {}).input:
+      case (messageText.match(/open_graph/) || {}).input:
         sendOpenGraphMessage(senderID);
         break;
-      case (messageText.match(/generic/gi) || {}).input:
+      case (messageText.match(/generic/) || (/ordinary/) || {}).input:
         sendGenericMessage(senderID);
         break;
-      case (messageText.match(/button/gi) || {}).input:
+      case (messageText.match(/button/) || {}).input:
         sendButtonMessage(senderID);
         break;
-      case (messageText.match(/receipt/gi) || {}).input:
+      case (messageText.match(/receipt/) || {}).input:
         sendReceiptMessage(senderID);
         break;
       default:

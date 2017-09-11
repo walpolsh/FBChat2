@@ -76,7 +76,7 @@ function receivedMessage(event) {
 
   var messageText = message.text;
   var messageAttachments = message.attachments;
-  var generic = new RegExp('generic', 'gi');
+  var generic = new RegExp(/generic/, 'gi');
 
   if (messageText) {
 

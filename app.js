@@ -101,51 +101,79 @@ function receivedMessage(event) {
   }
 }
 
-
-function persistentMenu(recipientId, messageText) {
-  var messageData = {
-    recipient: {
-      id: recipientId,
-    },
-    persistent_menu:[
-    {
-      locale:'default',
-      composer_input_disabled: true,
-      call_to_actions:[
-        {
-          title:'My Account',
-          type:'nested',
-          call_to_actions:[
-            {
-              title:'Pay Bill',
-              type:'postback',
-              payload:PAYBILL_PAYLOAD,
-            },
-            {
-              title:'History',
-              type:'postback',
-              payload:HISTORY_PAYLOAD,
-            },
-            {
-              title:'Contact Info',
-              type:'postback',
-              payload:CONTACT_INFO_PAYLOAD,
-            }
-          ]
-        },
-        {
-          type:'web_url',
-          title:'Latest News',
-          url:'http://petershats.parseapp.com/hat-news',
-          webview_height_ratio:'full'
-        }
-      ]
-    },
-    {
-      locale:'zh_CN',
-      composer_input_disabled:false
+function addPersistentMenu(){
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+    qs: { access_token: PAGE_ACCESS_TOKEN },
+    method: 'POST',
+    json:{
+  "get_started":{
+        "payload":"GET_STARTED_PAYLOAD",
+      }
     }
+  }, function(error, response, body) {
+    console.log(response)
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+  })
+request({
+  url: 'https://graph.facebook.com/v2.6/me/messenger_profile',
+  qs: { access_token: PAGE_ACCESS_TOKEN },
+  method: 'POST',
+  json:{
+"persistent_menu":[
+  {
+    "locale":"default",
+    "composer_input_disabled":true,
+    "call_to_actions":[
+      {
+        "title":"My Account",
+        "type":"nested",
+        "call_to_actions":[
+          {
+            "title":"Pay Bill",
+            "type":"postback",
+            "payload":"PAYBILL_PAYLOAD"
+          },
+          {
+            "title":"History",
+            "type":"postback",
+            "payload":"HISTORY_PAYLOAD"
+          },
+          {
+            "title":"Contact Info",
+            "type":"postback",
+            "payload":"CONTACT_INFO_PAYLOAD"
+          }
+        ]
+      },
+      {
+        "type":"web_url",
+        "title":"Latest News",
+        "url":"http://foxnews.com",
+        "webview_height_ratio":"full"
+      }
+    ]
+  },
+  {
+    "locale":"zh_CN",
+    "composer_input_disabled":false
+  }
   ]
+  }
+
+}, function(error, response, body) {
+  console.log(response)
+  if (error) {
+      console.log('Error sending messages: ', error)
+  } else if (response.body.error) {
+      console.log('Error: ', response.body.error)
+  }
+})
+
 }
 
 function sendOpenGraphMessage(recipientId, messageText) {

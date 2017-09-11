@@ -57,12 +57,6 @@ app.post('/webhook', function (req, res) {
 });
 
 function receivedMessage(event) {
-  // Putting a stub for nosw, we'll expand it in the following steps
-  console.log("Message data: ", event.message);
-}
-
-
-function receivedMessage(event) {
   var senderID = event.sender.id;
   var recipientID = event.recipient.id;
   var timeOfMessage = event.timestamp;
@@ -134,7 +128,7 @@ function sendOpenGraphMessage(recipientId, messageText) {
 function sendGenericMessage(recipientId, messageText) {
   var messageData = {
     recipient: {
-      id: recipientId
+      id: recipientId,
     },
     message: {
       attachment: {
